@@ -2,17 +2,23 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 import {routes} from "@/data/global";
-import useDelayedRender from "use-delayed-render";
 
 export default function MobileNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { mounted: isMenuMounted, rendered: isMenuRendered } = useDelayedRender(
-    isMenuOpen,
-    {
-      enterDelay: 20,
-      exitDelay: 300,
+  const [isMenuMounted, setIsMenuMounted] = useState(false);
+  const [isMenuRendered, setIsMenuRendered] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      setIsMenuMounted(true);
+      const timer = setTimeout(() => setIsMenuRendered(true), 20);
+      return () => clearTimeout(timer);
+    } else {
+      setIsMenuRendered(false);
+      const timer = setTimeout(() => setIsMenuMounted(false), 300);
+      return () => clearTimeout(timer);
     }
-  );
+  }, [isMenuOpen]);
 
   function toggleMenu() {
     if (isMenuOpen) {
@@ -40,8 +46,8 @@ export default function MobileNavbar() {
           <Link href="/">
             <img
               className="mr-3"
-              src="/static/logos/logo_full.svg"
-              width="160"
+              src="/static/logos/ADAMSITE LOGO (1).png"
+              width="80"
             />
           </Link>
         </li>

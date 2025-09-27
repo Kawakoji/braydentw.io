@@ -24,7 +24,7 @@ type Footer = {
 
 export const routes: Route[] = [
   {
-    title: "Home",
+    title: "Accueil",
     path: "/",
   },
   // {
@@ -32,12 +32,8 @@ export const routes: Route[] = [
   //   path: "/blog",
   // },
   {
-    title: "Projects",
+    title: "Projets",
     path: "/projects",
-  },
-  {
-    title: "Designs",
-    path: "/designs",
   },
 ];
 
@@ -48,7 +44,7 @@ export const footer: Footer = {
       title: "Pages",
       links: [
         {
-          name: "Home",
+          name: "Accueil",
           link: "/",
           leavesWebsite: false,
         },
@@ -58,13 +54,8 @@ export const footer: Footer = {
         //   leavesWebsite: false,
         // },
         {
-          name: "Projects",
+          name: "Projets",
           link: "/projects",
-          leavesWebsite: false,
-        },
-        {
-          name: "Designs",
-          link: "/designs",
           leavesWebsite: false,
         },
       ],
@@ -74,31 +65,31 @@ export const footer: Footer = {
       links: [
         {
           name: "GitHub",
-          link: "https://github.com/braydentw",
+          link: "https://github.com/adamh",
           icon: "/static/icons/github-f.svg",
           leavesWebsite: true,
         },
         {
           name: "LinkedIn",
-          link: "https://www.linkedin.com/in/braydentw/",
+          link: "https://www.linkedin.com/in/adamh/",
           icon: "/static/icons/linkedin-f.svg",
           leavesWebsite: true,
         },
         {
           name: "Dribbble",
-          link: "https://dribbble.com/braydentw",
+          link: "https://dribbble.com/adamh",
           icon: "/static/icons/dribbble-f.svg",
           leavesWebsite: true,
         },
         {
           name: "IndieHackers",
-          link: "https://indiehackers.com/braydentw",
+          link: "https://indiehackers.com/adamh",
           icon: "/static/icons/indiehackers-f.svg",
           leavesWebsite: true,
         },
         {
           name: "Email",
-          link: "mailto:contact@braydentw.io",
+          link: "mailto:contact@adamh.io",
           icon: "/static/icons/mail-f.svg",
           leavesWebsite: true,
         },
@@ -106,8 +97,8 @@ export const footer: Footer = {
     },
   ],
   support: {
-    buymeacoffee: "braydenw",
-    paypal: "braydentw",
-    message: "I appreciate your support very much! 💙",
+    buymeacoffee: "adamh",
+    paypal: "adamh",
+    message: "J'apprécie énormément votre soutien ! 💙",
   },
 };

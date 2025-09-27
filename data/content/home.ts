@@ -29,7 +29,7 @@ export const skills: Skill[] = [
   },
   {
     title: "TailwindCSS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/icons/tailwindcss/tailwindcss-plain.svg",
   },
   {
     title: "React",
@@ -65,20 +65,20 @@ export const skills: Skill[] = [
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "The communication throughout the project was spot on and the genre of design was carried out well.",
+      "La communication tout au long du projet était parfaite et le style de design a été bien réalisé.",
     name: "Wilson Bright",
-    job: "Co-Founder of BlockSurvey",
+    job: "Co-Fondateur de BlockSurvey",
   },
   {
     quote:
-      "The code was clean, easy to understand, and exactly what I was looking for.",
+      "Le code était propre, facile à comprendre, et exactement ce que je recherchais.",
     name: "Philip Imperato",
-    job: "CEO of VisualBonus",
+    job: "PDG de VisualBonus",
   },
   {
     quote:
-      "My vision was executed perfectly. The quality and speed of the work was excellent.",
+      "Ma vision a été exécutée parfaitement. La qualité et la rapidité du travail étaient excellentes.",
     name: "Zach Green",
-    job: "Founder of Hangxiety Shrink",
+    job: "Fondateur de Hangxiety Shrink",
   },
 ];

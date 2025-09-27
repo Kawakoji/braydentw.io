@@ -1,4 +1,3 @@
-import Footer from "../global/Footer";
 import Head from "next/head";
 import MobileNavbar from "../global/MobileNavbar";
 import Navbar from "../global/Navbar";
@@ -99,7 +98,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
         </div>
         {children}
       </main>
-      <Footer />
     </div>
   );
 }
