@@ -26,7 +26,7 @@ function Hero() {
           <img
             className="sqD bottom-[-300px] -right-1/4 sm:right-[-20%] lg:bottom-[-310px] lg:right-[-120px] w-[400px]"
             style={{ animationDelay: "0.3s" }}
-            src="/static/logos/ADAMSITE LOGO (1).png"
+            src="/ADAM.png"
           />
           <img
             className="sqD hidden sm:block bottom-[-340px] left-[-180px]"
