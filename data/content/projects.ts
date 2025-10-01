@@ -58,6 +58,14 @@ const projects: Project[] = [
     link: "https://adambiznesssite.netlify.app/",
     tags: ["HTML", "CSS", "Javascript", "Business"],
   },
+  {
+    id: 7,
+    title: "Skarbowsky Gym",
+    desc: "Site web pour salle de sport spécialisée en Muay Thaï avec planning, tarifs et informations sur les deux salles.",
+    img: "/static/projects/skarbowsky.png",
+    link: "https://skarbowsky-gym.netlify.app/",
+    tags: ["HTML", "CSS", "Javascript", "Responsive"],
+  },
 ];
 
 export const allTags = []
