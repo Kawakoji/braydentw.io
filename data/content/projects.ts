@@ -12,6 +12,14 @@ const projects: Project[] = [
   },
   {
     id: 1,
+    title: "Skarbowsky Gym",
+    desc: "Site web pour salle de sport spécialisée en Muay Thaï avec planning, tarifs et informations sur les deux salles.",
+    img: "/static/projects/skarbowsky.png",
+    link: "https://skarbowsky-gym.netlify.app/",
+    tags: ["HTML", "CSS", "Javascript", "Responsive"],
+  },
+  {
+    id: 2,
     title: "Coffee Blend",
     desc: "Site web élégant pour café avec menu interactif, réservation de table et boutique en ligne.",
     img: "/static/projects/coffesite.png",
@@ -19,7 +27,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Javascript", "E-commerce"],
   },
   {
-    id: 2,
+    id: 3,
     title: "Résilience Café",
     desc: "Site web artisanal pour café parisien avec menu interactif, galerie et événements.",
     img: "/static/projects/resilience.png",
@@ -27,7 +35,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Javascript", "Café"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Hair Salon",
     desc: "Site web moderne pour salon de coiffure avec services, témoignages et réservation en ligne.",
     img: "/static/projects/coiffure.png",
@@ -35,7 +43,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Javascript", "Salon"],
   },
   {
-    id: 4,
+    id: 5,
     title: "Lazy Fox Agency",
     desc: "Site web moderne pour agence de services avec design responsive et animations fluides.",
     img: "/static/projects/fox.png",
@@ -43,7 +51,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Javascript", "Agency"],
   },
   {
-    id: 5,
+    id: 6,
     title: "FlameOnePage",
     desc: "Site web one-page professionnel avec portfolio, services et tarifs pour solutions high-end.",
     img: "/static/projects/flm.png",
@@ -51,20 +59,12 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "Javascript", "OnePage"],
   },
   {
-    id: 6,
+    id: 7,
     title: "BizPage",
     desc: "Site web professionnel pour entreprise avec portfolio, équipe, services et tarifs.",
     img: "/static/projects/bizness.png",
     link: "https://adambiznesssite.netlify.app/",
     tags: ["HTML", "CSS", "Javascript", "Business"],
-  },
-  {
-    id: 7,
-    title: "Skarbowsky Gym",
-    desc: "Site web pour salle de sport spécialisée en Muay Thaï avec planning, tarifs et informations sur les deux salles.",
-    img: "/static/projects/skarbowsky.png",
-    link: "https://skarbowsky-gym.netlify.app/",
-    tags: ["HTML", "CSS", "Javascript", "Responsive"],
   },
 ];
 
