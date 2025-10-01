@@ -5,7 +5,6 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Adam - Developper, Designer, Creator</title>
           <link
             rel="icon"
             type="image/png"
