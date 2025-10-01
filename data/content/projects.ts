@@ -20,19 +20,19 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Coffee Blend",
-    desc: "Site web élégant pour café avec menu interactif, réservation de table et boutique en ligne.",
-    img: "/static/projects/coffesite.png",
-    link: "https://coffeesiteadam.netlify.app/",
-    tags: ["HTML", "CSS", "Javascript", "E-commerce"],
-  },
-  {
-    id: 3,
     title: "Résilience Café",
     desc: "Site web artisanal pour café parisien avec menu interactif, galerie et événements.",
     img: "/static/projects/resilience.png",
     link: "https://resilience-cafe-paris.netlify.app/",
     tags: ["HTML", "CSS", "Javascript", "Café"],
+  },
+  {
+    id: 3,
+    title: "Coffee Blend",
+    desc: "Site web élégant pour café avec menu interactif, réservation de table et boutique en ligne.",
+    img: "/static/projects/coffesite.png",
+    link: "https://coffeesiteadam.netlify.app/",
+    tags: ["HTML", "CSS", "Javascript", "E-commerce"],
   },
   {
     id: 4,
