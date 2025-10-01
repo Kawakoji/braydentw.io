@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  NODE_ENV = "production"
+  NODE_ENV = "development"
   NEXT_TELEMETRY_DISABLED = "1"
   NPM_CONFIG_PACKAGE_LOCK = "true"
 
