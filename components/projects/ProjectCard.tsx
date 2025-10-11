@@ -18,7 +18,7 @@ function ProjectCard({ project }) {
           <video
             className="w-full rounded-md"
             src={project.img}
-            controls
+            autoPlay
             muted
             loop
             playsInline
