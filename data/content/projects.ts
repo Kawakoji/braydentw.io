@@ -18,6 +18,14 @@ const projects: Project[] = [
     link: "https://tawakkulvoyage.netlify.app/#reservation",
     tags: ["HTML", "CSS", "Javascript", "Voyage"],
   },
+  {
+    id: 2,
+    title: "Scouts Permaculteurs",
+    desc: "Site web pour l'association des scouts permaculteurs avec informations sur les activités, formations et valeurs écologiques.",
+    img: "/static/projects/videoscout.mp4",
+    link: "https://scouts-permaculteurs.netlify.app/",
+    tags: ["HTML", "CSS", "Javascript", "Écologie", "Scoutisme"],
+  },
 ];
 
 export const allTags = []
