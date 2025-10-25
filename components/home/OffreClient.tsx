@@ -108,7 +108,18 @@ function OffreClient() {
                 </div>
                 <h4 className="font-bold mb-2">{module.title}</h4>
                 <p className="text-xs text-fun-gray mb-3">{module.description}</p>
-                <div className="text-fun-pink font-bold">+{module.price} €</div>
+                <div className="text-fun-pink font-bold mb-2">+{module.price} €</div>
+                {module.recurringCosts && (
+                  <div className="text-xs text-fun-gray bg-fun-pink-darkerer p-2 rounded">
+                    <div className="font-semibold text-fun-pink mb-1">
+                      Coût récurrent : {module.recurringCosts.amount} {module.recurringCosts.frequency}
+                    </div>
+                    <div className="text-xs mb-1">{module.recurringCosts.reason}</div>
+                    {module.recurringCosts.alternative && (
+                      <div className="text-xs italic">{module.recurringCosts.alternative}</div>
+                    )}
+                  </div>
+                )}
               </div>
               {/* Bouton Voir l'exemple */}
               {(module.id === 'booking' || module.id === 'planning' || module.id === 'client') && (

@@ -14,6 +14,12 @@ export type Module = {
   description: string;
   price: number;
   icon: string;
+  recurringCosts?: {
+    amount: string;
+    frequency: string;
+    reason: string;
+    alternative?: string;
+  };
 };
 
 export const siteTypes: SiteType[] = [
@@ -84,56 +90,104 @@ export const modules: Module[] = [
     title: "Réservation / Booking",
     description: "Système de réservation de date ou service en ligne",
     price: 350,
-    icon: "📅"
+    icon: "📅",
+    recurringCosts: {
+      amount: "0€",
+      frequency: "par mois",
+      reason: "Système entièrement custom - pas d'abonnement externe",
+      alternative: "Utilise votre propre base de données"
+    }
   },
   {
     id: "planning",
     title: "Planning / Agenda",
     description: "Gestion des disponibilités et rendez-vous",
     price: 300,
-    icon: "📆"
+    icon: "📆",
+    recurringCosts: {
+      amount: "0€",
+      frequency: "par mois",
+      reason: "Développement sur mesure - pas de service externe",
+      alternative: "Fonctionne avec votre hébergement"
+    }
   },
   {
     id: "mailing",
     title: "Mailing / Newsletter",
     description: "Envoi automatique d'e-mails via API",
     price: 250,
-    icon: "📧"
+    icon: "📧",
+    recurringCosts: {
+      amount: "0€",
+      frequency: "par mois",
+      reason: "Utilise votre email professionnel (Gmail, Outlook, etc.)",
+      alternative: "Alternative : Service premium (20-50€/mois) pour gros volumes"
+    }
   },
   {
     id: "form",
     title: "Formulaire Avancé",
     description: "Logique conditionnelle et envoi dynamique",
     price: 150,
-    icon: "📝"
+    icon: "📝",
+    recurringCosts: {
+      amount: "0€",
+      frequency: "par mois",
+      reason: "Développement custom - pas d'abonnement",
+      alternative: "Fonctionne avec votre hébergement"
+    }
   },
   {
     id: "client",
     title: "Espace Client",
     description: "Authentification, profils et gestion de données",
     price: 500,
-    icon: "👤"
+    icon: "👤",
+    recurringCosts: {
+      amount: "0€",
+      frequency: "par mois",
+      reason: "Système d'authentification custom - pas de service externe",
+      alternative: "Alternative : Auth0 (20-50€/mois) pour plus de fonctionnalités"
+    }
   },
   {
     id: "payment",
     title: "Paiement en Ligne",
     description: "Intégration Stripe / PayPal / Lydia Pro",
     price: 400,
-    icon: "💳"
+    icon: "💳",
+    recurringCosts: {
+      amount: "1,4% + 0,25€",
+      frequency: "par transaction",
+      reason: "Frais de transaction uniquement - pas d'abonnement mensuel",
+      alternative: "Alternative : Lydia Pro (0,5% par transaction)"
+    }
   },
   {
     id: "dashboard",
     title: "Tableau de Bord Admin",
     description: "Statistiques et visualisation des données",
     price: 600,
-    icon: "📊"
+    icon: "📊",
+    recurringCosts: {
+      amount: "0€",
+      frequency: "par mois",
+      reason: "Développement custom - utilise vos données existantes",
+      alternative: "Alternative : Google Analytics (gratuit) ou services premium"
+    }
   },
   {
     id: "multilang",
     title: "Multilingue",
     description: "Gestion des langues et SEO multilingue",
     price: 300,
-    icon: "🌍"
+    icon: "🌍",
+    recurringCosts: {
+      amount: "0€",
+      frequency: "par mois",
+      reason: "Développement custom - pas de service externe",
+      alternative: "Fonctionne avec votre hébergement"
+    }
   }
 ];
 
