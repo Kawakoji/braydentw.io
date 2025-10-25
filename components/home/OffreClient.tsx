@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import SectionTitle from "../global/SectionTitle";
 import { siteTypes, modules, guarantees } from "@/data/content/offres";
 
@@ -111,13 +112,13 @@ function OffreClient() {
               </div>
               {/* Bouton Voir l'exemple */}
               {(module.id === 'booking' || module.id === 'planning' || module.id === 'client') && (
-                <a
+                <Link
                   href="/demos"
                   onClick={(e) => e.stopPropagation()}
                   className="mt-3 w-full block text-center px-3 py-2 bg-fun-pink text-white text-xs rounded-lg hover:opacity-75 transition-opacity"
                 >
                   Voir l'exemple →
-                </a>
+                </Link>
               )}
             </div>
           ))}
