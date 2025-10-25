@@ -3,8 +3,13 @@ import Page from "@/components/utility/Page";
 import BookingDemo from "@/components/demos/BookingDemo";
 import PlanningDemo from "@/components/demos/PlanningDemo";
 import ClientSpaceDemo from "@/components/demos/ClientSpaceDemo";
+import PaymentDemo from "@/components/demos/PaymentDemo";
+import DashboardDemo from "@/components/demos/DashboardDemo";
+import MultilangDemo from "@/components/demos/MultilangDemo";
+import FormDemo from "@/components/demos/FormDemo";
+import MailingDemo from "@/components/demos/MailingDemo";
 
-type DemoType = "booking" | "planning" | "client" | null;
+type DemoType = "booking" | "planning" | "client" | "payment" | "dashboard" | "multilang" | "form" | "mailing" | null;
 
 export default function Demos() {
   const [activeDemo, setActiveDemo] = useState<DemoType>(null);
@@ -31,6 +36,41 @@ export default function Demos() {
       icon: "👤",
       color: "bg-green-500"
     },
+    {
+      id: "payment" as DemoType,
+      title: "Paiement en Ligne",
+      description: "Intégration sécurisée de paiements",
+      icon: "💳",
+      color: "bg-yellow-500"
+    },
+    {
+      id: "dashboard" as DemoType,
+      title: "Tableau de Bord Admin",
+      description: "Interface d'administration et statistiques",
+      icon: "📊",
+      color: "bg-indigo-500"
+    },
+    {
+      id: "multilang" as DemoType,
+      title: "Multilingue",
+      description: "Gestion des langues et SEO multilingue",
+      icon: "🌍",
+      color: "bg-teal-500"
+    },
+    {
+      id: "form" as DemoType,
+      title: "Formulaire Avancé",
+      description: "Formulaires avec logique conditionnelle",
+      icon: "📝",
+      color: "bg-pink-500"
+    },
+    {
+      id: "mailing" as DemoType,
+      title: "Mailing / Newsletter",
+      description: "Système d'envoi d'emails automatiques",
+      icon: "📧",
+      color: "bg-orange-500"
+    }
   ];
 
   const renderDemo = () => {
@@ -41,6 +81,16 @@ export default function Demos() {
         return <PlanningDemo />;
       case "client":
         return <ClientSpaceDemo />;
+      case "payment":
+        return <PaymentDemo />;
+      case "dashboard":
+        return <DashboardDemo />;
+      case "multilang":
+        return <MultilangDemo />;
+      case "form":
+        return <FormDemo />;
+      case "mailing":
+        return <MailingDemo />;
       default:
         return null;
     }
@@ -65,7 +115,7 @@ export default function Demos() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {demos.map((demo) => (
                 <div
                   key={demo.id}

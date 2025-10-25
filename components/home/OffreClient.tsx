@@ -122,7 +122,9 @@ function OffreClient() {
                 )}
               </div>
               {/* Bouton Voir l'exemple */}
-              {(module.id === 'booking' || module.id === 'planning' || module.id === 'client') && (
+              {(module.id === 'booking' || module.id === 'planning' || module.id === 'client' || 
+                module.id === 'payment' || module.id === 'dashboard' || module.id === 'multilang' || 
+                module.id === 'form' || module.id === 'mailing') && (
                 <div
                   onClick={(e) => e.stopPropagation()}
                   className="mt-3 w-full block text-center px-3 py-2 bg-fun-pink text-white text-xs rounded-lg hover:opacity-75 transition-opacity"
