@@ -84,27 +84,41 @@ function OffreClient() {
           {modules.map((module) => (
             <div
               key={module.id}
-              onClick={() => toggleModule(module.id)}
               className={`
-                p-4 rounded-lg border-2 cursor-pointer transition-all
+                p-4 rounded-lg border-2 transition-all
                 ${selectedModules.includes(module.id)
                   ? 'border-fun-pink bg-fun-pink-darkerer'
                   : 'border-fun-gray hover:border-fun-pink-dark'
                 }
               `}
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-2xl">{module.icon}</span>
-                <input
-                  type="checkbox"
-                  checked={selectedModules.includes(module.id)}
-                  onChange={() => {}}
-                  className="w-5 h-5"
-                />
+              <div 
+                onClick={() => toggleModule(module.id)}
+                className="cursor-pointer"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-2xl">{module.icon}</span>
+                  <input
+                    type="checkbox"
+                    checked={selectedModules.includes(module.id)}
+                    onChange={() => {}}
+                    className="w-5 h-5"
+                  />
+                </div>
+                <h4 className="font-bold mb-2">{module.title}</h4>
+                <p className="text-xs text-fun-gray mb-3">{module.description}</p>
+                <div className="text-fun-pink font-bold">+{module.price} €</div>
               </div>
-              <h4 className="font-bold mb-2">{module.title}</h4>
-              <p className="text-xs text-fun-gray mb-3">{module.description}</p>
-              <div className="text-fun-pink font-bold">+{module.price} €</div>
+              {/* Bouton Voir l'exemple */}
+              {(module.id === 'booking' || module.id === 'planning' || module.id === 'client') && (
+                <a
+                  href="/demos"
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-3 w-full block text-center px-3 py-2 bg-fun-pink text-white text-xs rounded-lg hover:opacity-75 transition-opacity"
+                >
+                  Voir l'exemple →
+                </a>
+              )}
             </div>
           ))}
         </div>
