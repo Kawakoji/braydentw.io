@@ -289,7 +289,7 @@ function FormDemo() {
                 </div>
               </div>
               <div className="flex items-center">
-                <span className="text-2xl mr-3">🎯</div>
+                <span className="text-2xl mr-3">🎯</span>
                 <div>
                   <div className="font-semibold">Personnalisation</div>
                   <div className="text-sm text-fun-gray">Champs qui apparaissent selon les besoins</div>
