@@ -25,8 +25,7 @@ export const skills: Skill[] = [
   },
   {
     title: "Vercel",
-    icon: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/vercel.svg",
-    style: { filter: "invert(1)" },
+    icon: "https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/vercel.svg",
   },
   {
     title: "TailwindCSS",
@@ -55,7 +54,7 @@ export const skills: Skill[] = [
   },
   {
     title: "Neon Base",
-    icon: "https://raw.githubusercontent.com/neondatabase/neon/main/public/logo.svg",
+    icon: "https://assets.website-files.com/6455efb1e14c9fe78369bc3f/646a5d7b6c049a9c49c0a949_Neon-Logo-Full.svg",
   },
   {
     title: "Figma",

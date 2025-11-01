@@ -56,8 +56,8 @@ export const siteTypes: SiteType[] = [
     id: "ecommerce",
     title: "Site E-commerce",
     description: "Panier, paiement, gestion produits",
-    price: 1500,
-    priceLabel: "à partir de 1 500 €",
+    price: 800,
+    priceLabel: "à partir de 800 €",
     icon: "🛒",
     features: [
       "Gestion complète des produits",
