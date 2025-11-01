@@ -24,8 +24,9 @@ export const skills: Skill[] = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
   },
   {
-    title: "Sass",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
+    title: "Vercel",
+    icon: "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/vercel.svg",
+    style: { filter: "invert(1)" },
   },
   {
     title: "TailwindCSS",
@@ -53,8 +54,8 @@ export const skills: Skill[] = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
   },
   {
-    title: "Firebase",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+    title: "Neon Base",
+    icon: "https://raw.githubusercontent.com/neondatabase/neon/main/public/logo.svg",
   },
   {
     title: "Figma",
