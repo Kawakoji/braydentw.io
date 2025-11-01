@@ -27,8 +27,8 @@ export const siteTypes: SiteType[] = [
     id: "landing",
     title: "Landing Page",
     description: "Une page unique avec call-to-action",
-    price: 500,
-    priceLabel: "à partir de 500 €",
+    price: 200,
+    priceLabel: "à partir de 200 €",
     icon: "📄",
     features: [
       "Design moderne et responsive",
@@ -41,8 +41,8 @@ export const siteTypes: SiteType[] = [
     id: "vitrine",
     title: "Site Vitrine",
     description: "3 à 6 pages, formulaire, SEO, responsive",
-    price: 900,
-    priceLabel: "à partir de 900 €",
+    price: 500,
+    priceLabel: "à partir de 500 €",
     icon: "🌐",
     features: [
       "3 à 6 pages personnalisées",
@@ -56,8 +56,8 @@ export const siteTypes: SiteType[] = [
     id: "ecommerce",
     title: "Site E-commerce",
     description: "Panier, paiement, gestion produits",
-    price: 1800,
-    priceLabel: "à partir de 1 800 €",
+    price: 1500,
+    priceLabel: "à partir de 1 500 €",
     icon: "🛒",
     features: [
       "Gestion complète des produits",
@@ -71,8 +71,8 @@ export const siteTypes: SiteType[] = [
     id: "custom",
     title: "Application Web Sur Mesure",
     description: "Interface complexe, base de données, authentification",
-    price: 2500,
-    priceLabel: "à partir de 2 500 €",
+    price: 2000,
+    priceLabel: "à partir de 2 000 €",
     icon: "⚙️",
     features: [
       "Architecture personnalisée",
@@ -89,7 +89,7 @@ export const modules: Module[] = [
     id: "booking",
     title: "Réservation / Booking",
     description: "Système de réservation de date ou service en ligne",
-    price: 350,
+    price: 300,
     icon: "📅",
     recurringCosts: {
       amount: "0€",
@@ -102,7 +102,7 @@ export const modules: Module[] = [
     id: "planning",
     title: "Planning / Agenda",
     description: "Gestion des disponibilités et rendez-vous",
-    price: 300,
+    price: 250,
     icon: "📆",
     recurringCosts: {
       amount: "0€",
@@ -115,7 +115,7 @@ export const modules: Module[] = [
     id: "mailing",
     title: "Mailing / Newsletter",
     description: "Envoi automatique d'e-mails via API",
-    price: 250,
+    price: 200,
     icon: "📧",
     recurringCosts: {
       amount: "0€",
@@ -141,7 +141,7 @@ export const modules: Module[] = [
     id: "client",
     title: "Espace Client",
     description: "Authentification, profils et gestion de données",
-    price: 500,
+    price: 400,
     icon: "👤",
     recurringCosts: {
       amount: "0€",
@@ -154,7 +154,7 @@ export const modules: Module[] = [
     id: "payment",
     title: "Paiement en Ligne",
     description: "Intégration Stripe / PayPal / Lydia Pro",
-    price: 400,
+    price: 350,
     icon: "💳",
     recurringCosts: {
       amount: "1,4% + 0,25€",
@@ -167,7 +167,7 @@ export const modules: Module[] = [
     id: "dashboard",
     title: "Tableau de Bord Admin",
     description: "Statistiques et visualisation des données",
-    price: 600,
+    price: 500,
     icon: "📊",
     recurringCosts: {
       amount: "0€",
@@ -180,7 +180,7 @@ export const modules: Module[] = [
     id: "multilang",
     title: "Multilingue",
     description: "Gestion des langues et SEO multilingue",
-    price: 300,
+    price: 250,
     icon: "🌍",
     recurringCosts: {
       amount: "0€",
