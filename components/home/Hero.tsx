@@ -10,9 +10,9 @@ function Hero() {
       >
         <p className="text-xl mb-5">Salut, je suis Adam.</p>
         <h1 className="heroTitle inline-block max-w-2xl lg:max-w-4xl  w-auto relative text-5xl md:text-6xl lg:text-7xl tracking-tighter mb-10 font-bold heroShinyBg">
-          J'aime <span className="heroShiny1 text-fun-pink">développer</span> et{" "}
-          <span className="heroShiny2 text-fun-pink">concevoir</span> des sites
-          web.
+          Sites web, <span className="heroShiny1 text-fun-pink">applications</span> et{" "}
+          <span className="heroShiny2 text-fun-pink">solutions</span> sur mesure{" "}
+          – tout ce dont votre projet digital a besoin.
           <img
             className="sqD squiggle-hero-html w-16 top-[-90px] right-[5%] sm:top-[-90px] sm:right-[170px]"
             style={{ animationDelay: "0.1s" }}
