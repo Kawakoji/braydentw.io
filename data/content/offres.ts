@@ -71,8 +71,8 @@ export const siteTypes: SiteType[] = [
     id: "custom",
     title: "Application Web Sur Mesure",
     description: "Interface complexe, base de données, authentification",
-    price: 0,
-    priceLabel: "Sur devis",
+    price: 2500,
+    priceLabel: "à partir de 2 500 €",
     icon: "⚙️",
     features: [
       "Architecture personnalisée",
@@ -187,6 +187,19 @@ export const modules: Module[] = [
       frequency: "par mois",
       reason: "Développement custom - pas de service externe",
       alternative: "Fonctionne avec votre hébergement"
+    }
+  },
+  {
+    id: "maintenance",
+    title: "Pack Maintenance / Support",
+    description: "Maintenance, mises à jour et support technique rapide",
+    price: 0,
+    icon: "🛠️",
+    recurringCosts: {
+      amount: "Sur devis",
+      frequency: "par mois",
+      reason: "Services très rapides et réactifs - tarification selon vos besoins",
+      alternative: "Interventions ponctuelles ou forfait mensuel disponible"
     }
   }
 ];
