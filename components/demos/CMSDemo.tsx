@@ -8,8 +8,10 @@ interface CarouselImage {
 
 interface MenuItem {
   id: number;
-  title: string;
-  path: string;
+  name: string;
+  description: string;
+  price: string;
+  category: string;
 }
 
 function CMSDemo() {
@@ -23,14 +25,17 @@ function CMSDemo() {
   const [newImageUrl, setNewImageUrl] = useState("");
   const [newImageAlt, setNewImageAlt] = useState("");
   
-  // État pour les menus
+  // État pour le menu restaurant
   const [menuItems, setMenuItems] = useState<MenuItem[]>([
-    { id: 1, title: "Accueil", path: "/" },
-    { id: 2, title: "Services", path: "/services" },
-    { id: 3, title: "Contact", path: "/contact" },
+    { id: 1, name: "Burger Classic", description: "Pain brioché, steak haché, salade, tomate, oignons", price: "12€", category: "Plats" },
+    { id: 2, name: "Pizza Margherita", description: "Tomate, mozzarella, basilic frais", price: "11€", category: "Plats" },
+    { id: 3, name: "Tiramisu", description: "Dessert italien au café et mascarpone", price: "6€", category: "Desserts" },
   ]);
-  const [newMenuTitle, setNewMenuTitle] = useState("");
-  const [newMenuPath, setNewMenuPath] = useState("");
+  const [newMenuName, setNewMenuName] = useState("");
+  const [newMenuDescription, setNewMenuDescription] = useState("");
+  const [newMenuPrice, setNewMenuPrice] = useState("");
+  const [newMenuCategory, setNewMenuCategory] = useState("Plats");
+  const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
 
   // Fonctions pour le carrousel
   const addCarouselImage = () => {
@@ -52,25 +57,45 @@ function CMSDemo() {
     setCarouselImages(carouselImages.filter(img => img.id !== id));
   };
 
-  // Fonctions pour les menus
+  // Fonction pour le carrousel automatique
+  React.useEffect(() => {
+    if (activeTab === 'carousel' && carouselImages.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentCarouselIndex((prev) => (prev + 1) % carouselImages.length);
+      }, 3000); // Change d'image toutes les 3 secondes
+      return () => clearInterval(interval);
+    }
+  }, [activeTab, carouselImages.length]);
+
+  // Fonctions pour les menus restaurant
   const addMenuItem = () => {
-    if (newMenuTitle.trim() && newMenuPath.trim()) {
+    if (newMenuName.trim() && newMenuPrice.trim()) {
       const newId = menuItems.length > 0 
         ? Math.max(...menuItems.map(item => item.id)) + 1 
         : 1;
       setMenuItems([...menuItems, {
         id: newId,
-        title: newMenuTitle,
-        path: newMenuPath
+        name: newMenuName,
+        description: newMenuDescription || "Aucune description",
+        price: newMenuPrice,
+        category: newMenuCategory
       }]);
-      setNewMenuTitle("");
-      setNewMenuPath("");
+      setNewMenuName("");
+      setNewMenuDescription("");
+      setNewMenuPrice("");
+      setNewMenuCategory("Plats");
     }
   };
 
   const removeMenuItem = (id: number) => {
     setMenuItems(menuItems.filter(item => item.id !== id));
   };
+
+  const getItemsByCategory = (category: string) => {
+    return menuItems.filter(item => item.category === category);
+  };
+
+  const categories = Array.from(new Set(menuItems.map(item => item.category)));
 
   return (
     <div className="w-full max-w-6xl mx-auto">
@@ -109,16 +134,16 @@ function CMSDemo() {
           >
             🖼️ Gérer un Carrousel
           </button>
-          <button
-            onClick={() => setActiveTab('menu')}
-            className={`px-6 py-3 font-medium transition-colors whitespace-nowrap ${
-              activeTab === 'menu'
-                ? 'border-b-2 border-blue-600 text-blue-600'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            📑 Gérer les Menus
-          </button>
+            <button
+              onClick={() => setActiveTab('menu')}
+              className={`px-6 py-3 font-medium transition-colors whitespace-nowrap ${
+                activeTab === 'menu'
+                  ? 'border-b-2 border-blue-600 text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              🍽️ Gérer le Menu Restaurant
+            </button>
         </div>
 
         {/* Contenu des onglets */}
@@ -220,35 +245,113 @@ function CMSDemo() {
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <h3 className="text-xl font-bold mb-2">🖼️ Gestion du Carrousel d'Images</h3>
               <p className="text-sm text-gray-700">
-                Ajoutez, supprimez et organisez les images de votre carrousel. 
-                Dans le vrai CMS, vous pouvez uploader directement depuis votre ordinateur !
+                Ajoutez, supprimez et organisez les images de votre carrousel animé. 
+                Le carrousel tourne automatiquement ! Dans le vrai CMS, vous pouvez uploader directement depuis votre ordinateur.
               </p>
             </div>
 
-            {/* Affichage du carrousel */}
-            <div className="bg-gray-100 rounded-lg p-6">
-              <h4 className="font-semibold mb-4 text-center">Carrousel actuel</h4>
-              {carouselImages.length > 0 ? (
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {carouselImages.map((image) => (
-                    <div key={image.id} className="relative group">
+            {/* Affichage du carrousel animé */}
+            <div className="bg-gray-900 rounded-lg p-4">
+              <div className="relative overflow-hidden rounded-lg bg-white" style={{ height: '400px' }}>
+                {carouselImages.length > 0 ? (
+                  <>
+                    <div 
+                      className="flex transition-transform duration-500 ease-in-out h-full"
+                      style={{ 
+                        transform: `translateX(-${currentCarouselIndex * 100}%)`,
+                        width: `${carouselImages.length * 100}%`
+                      }}
+                    >
+                      {carouselImages.map((image, index) => (
+                        <div 
+                          key={image.id}
+                          className="w-full flex-shrink-0 h-full relative"
+                          style={{ width: `${100 / carouselImages.length}%` }}
+                        >
+                          <img 
+                            src={image.url} 
+                            alt={image.alt}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <p className="text-white font-medium">{image.alt}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Indicateurs de slides */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                      {carouselImages.map((_, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setCurrentCarouselIndex(index)}
+                          className={`h-2 rounded-full transition-all ${
+                            index === currentCarouselIndex 
+                              ? 'bg-white w-8' 
+                              : 'bg-white/50 w-2'
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Boutons précédent/suivant */}
+                    {carouselImages.length > 1 && (
+                      <>
+                        <button
+                          onClick={() => setCurrentCarouselIndex((prev) => 
+                            prev === 0 ? carouselImages.length - 1 : prev - 1
+                          )}
+                          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 transition-colors z-10"
+                        >
+                          ←
+                        </button>
+                        <button
+                          onClick={() => setCurrentCarouselIndex((prev) => 
+                            (prev + 1) % carouselImages.length
+                          )}
+                          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 transition-colors z-10"
+                        >
+                          →
+                        </button>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <p className="text-gray-500 text-lg">Aucune image dans le carrousel</p>
+                  </div>
+                )}
+              </div>
+              
+              {/* Liste des images pour gestion */}
+              {carouselImages.length > 0 && (
+                <div className="mt-4 grid grid-cols-3 md:grid-cols-5 gap-2">
+                  {carouselImages.map((image, index) => (
+                    <div 
+                      key={image.id} 
+                      className="relative group cursor-pointer"
+                      onClick={() => setCurrentCarouselIndex(index)}
+                    >
                       <img 
                         src={image.url} 
                         alt={image.alt}
-                        className="w-full h-48 object-cover rounded-lg"
+                        className={`w-full h-20 object-cover rounded border-2 transition-all ${
+                          index === currentCarouselIndex ? 'border-blue-500' : 'border-gray-300'
+                        }`}
                       />
                       <button
-                        onClick={() => removeCarouselImage(image.id)}
-                        className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          removeCarouselImage(image.id);
+                        }}
+                        className="absolute top-1 right-1 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity"
                       >
                         ×
                       </button>
-                      <p className="text-xs text-center mt-2 text-gray-600">{image.alt}</p>
                     </div>
                   ))}
                 </div>
-              ) : (
-                <p className="text-center text-gray-500 py-8">Aucune image dans le carrousel</p>
               )}
             </div>
 
@@ -305,117 +408,137 @@ function CMSDemo() {
 
         {activeTab === 'menu' && (
           <div className="space-y-6">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <h3 className="text-xl font-bold mb-2">📑 Gestion des Menus de Navigation</h3>
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+              <h3 className="text-xl font-bold mb-2">🍽️ Gestion du Menu Restaurant</h3>
               <p className="text-sm text-gray-700">
-                Ajoutez ou supprimez des rubriques dans votre menu de navigation. 
-                Les modifications apparaissent instantanément sur votre site !
+                Ajoutez, modifiez ou supprimez des plats de votre menu. Organisez par catégories 
+                (Entrées, Plats, Desserts, Boissons...). Les modifications apparaissent instantanément !
               </p>
             </div>
 
-            {/* Affichage du menu actuel */}
-            <div className="bg-gray-900 rounded-lg p-6">
-              <div className="bg-white rounded-lg p-4">
-                <h4 className="font-semibold mb-4 text-center">Menu de navigation actuel</h4>
-                {menuItems.length > 0 ? (
-                  <nav className="flex flex-wrap justify-center gap-4">
-                    {menuItems.map((item) => (
-                      <div 
-                        key={item.id}
-                        className="group relative px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                      >
-                        <a href={item.path} className="text-gray-800 font-medium">
-                          {item.title}
-                        </a>
-                        <button
-                          onClick={() => removeMenuItem(item.id)}
-                          className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-opacity"
-                          title="Supprimer"
-                        >
-                          ×
-                        </button>
-                      </div>
-                    ))}
-                  </nav>
-                ) : (
-                  <p className="text-center text-gray-500 py-4">Aucun élément dans le menu</p>
-                )}
+            {/* Affichage du menu restaurant */}
+            <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-6 text-center">
+                <h2 className="text-3xl font-bold mb-2">🍴 Notre Menu</h2>
+                <p className="text-orange-100">Découvrez nos spécialités</p>
               </div>
-            </div>
-
-            {/* Liste détaillée */}
-            <div className="border border-gray-200 rounded-lg p-4 bg-white">
-              <h4 className="font-semibold mb-3">Éléments du menu</h4>
-              <div className="space-y-2">
-                {menuItems.map((item) => (
-                  <div 
-                    key={item.id}
-                    className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
-                  >
-                    <div>
-                      <span className="font-medium text-gray-900">{item.title}</span>
-                      <span className="text-sm text-gray-500 ml-2">→ {item.path}</span>
-                    </div>
-                    <button
-                      onClick={() => removeMenuItem(item.id)}
-                      className="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors text-sm"
-                    >
-                      Supprimer
-                    </button>
-                  </div>
-                ))}
-                {menuItems.length === 0 && (
-                  <p className="text-center text-gray-500 py-4">Aucun élément</p>
+              
+              <div className="p-6">
+                {categories.length > 0 ? (
+                  categories.map((category) => {
+                    const items = getItemsByCategory(category);
+                    return (
+                      <div key={category} className="mb-8">
+                        <h3 className="text-2xl font-bold mb-4 pb-2 border-b-2 border-orange-500 text-gray-800">
+                          {category}
+                        </h3>
+                        <div className="space-y-4">
+                          {items.map((item) => (
+                            <div 
+                              key={item.id}
+                              className="group relative p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-orange-300 transition-all"
+                            >
+                              <div className="flex justify-between items-start">
+                                <div className="flex-1">
+                                  <div className="flex items-center justify-between mb-1">
+                                    <h4 className="font-bold text-lg text-gray-900">{item.name}</h4>
+                                    <span className="text-orange-600 font-bold text-lg">{item.price}</span>
+                                  </div>
+                                  <p className="text-gray-600 text-sm">{item.description}</p>
+                                </div>
+                                <button
+                                  onClick={() => removeMenuItem(item.id)}
+                                  className="ml-4 px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors text-sm opacity-0 group-hover:opacity-100"
+                                >
+                                  Supprimer
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="text-center text-gray-500 py-8">Aucun plat dans le menu</p>
                 )}
               </div>
             </div>
 
             {/* Formulaire d'ajout */}
             <div className="border border-gray-200 rounded-lg p-6 bg-white">
-              <h4 className="font-semibold mb-4">➕ Ajouter un élément au menu</h4>
+              <h4 className="font-semibold mb-4">➕ Ajouter un plat au menu</h4>
               <div className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Nom du plat *
+                    </label>
+                    <input
+                      type="text"
+                      value={newMenuName}
+                      onChange={(e) => setNewMenuName(e.target.value)}
+                      placeholder="Ex: Burger Classic, Pizza Margherita..."
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Catégorie
+                    </label>
+                    <select
+                      value={newMenuCategory}
+                      onChange={(e) => setNewMenuCategory(e.target.value)}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                    >
+                      <option>Plats</option>
+                      <option>Entrées</option>
+                      <option>Desserts</option>
+                      <option>Boissons</option>
+                      <option>Menus</option>
+                    </select>
+                  </div>
+                </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Titre du menu
+                    Description
                   </label>
-                  <input
-                    type="text"
-                    value={newMenuTitle}
-                    onChange={(e) => setNewMenuTitle(e.target.value)}
-                    placeholder="Ex: Blog, À propos, Portfolio..."
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  <textarea
+                    value={newMenuDescription}
+                    onChange={(e) => setNewMenuDescription(e.target.value)}
+                    placeholder="Ex: Pain brioché, steak haché, salade, tomate..."
+                    rows={2}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Chemin (URL)
+                    Prix *
                   </label>
                   <input
                     type="text"
-                    value={newMenuPath}
-                    onChange={(e) => setNewMenuPath(e.target.value)}
-                    placeholder="Ex: /blog, /about, /portfolio..."
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    value={newMenuPrice}
+                    onChange={(e) => setNewMenuPrice(e.target.value)}
+                    placeholder="Ex: 12€, 15.50€..."
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   />
-                  <p className="text-xs text-gray-500 mt-1">
-                    💡 Utilisez "/" pour la page d'accueil
-                  </p>
                 </div>
                 <button
                   onClick={addMenuItem}
-                  disabled={!newMenuTitle.trim() || !newMenuPath.trim()}
-                  className="w-full px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+                  disabled={!newMenuName.trim() || !newMenuPrice.trim()}
+                  className="w-full px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
                 >
                   ➕ Ajouter au menu
                 </button>
               </div>
             </div>
 
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <p className="text-green-800 text-sm">
+            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+              <p className="text-orange-800 text-sm">
                 ✅ <strong>Dans le vrai CMS :</strong> Les modifications sont sauvegardées 
                 automatiquement et le menu se met à jour en temps réel sur votre site. 
-                Vous pouvez réorganiser les éléments par glisser-déposer (fonctionnalité avancée) !
+                Vous pouvez aussi ajouter des images aux plats, modifier les prix en masse, 
+                et organiser les plats par ordre d'affichage !
               </p>
             </div>
           </div>
