@@ -190,6 +190,19 @@ export const modules: Module[] = [
     }
   },
   {
+    id: "cms",
+    title: "Module CMS Light",
+    description: "Panel admin pour modifier le contenu du site sans développeur",
+    price: 550,
+    icon: "✏️",
+    recurringCosts: {
+      amount: "0€",
+      frequency: "par mois",
+      reason: "Système intégré au site - pas d'abonnement externe nécessaire",
+      alternative: "Permet de modifier textes, images et menus directement depuis l'interface admin"
+    }
+  },
+  {
     id: "maintenance",
     title: "Pack Maintenance / Support",
     description: "Maintenance, mises à jour et support technique rapide",

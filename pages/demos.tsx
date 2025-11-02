@@ -8,8 +8,9 @@ import DashboardDemo from "@/components/demos/DashboardDemo";
 import MultilangDemo from "@/components/demos/MultilangDemo";
 import FormDemo from "@/components/demos/FormDemo";
 import MailingDemo from "@/components/demos/MailingDemo";
+import CMSDemo from "@/components/demos/CMSDemo";
 
-type DemoType = "booking" | "planning" | "client" | "payment" | "dashboard" | "multilang" | "form" | "mailing" | null;
+type DemoType = "booking" | "planning" | "client" | "payment" | "dashboard" | "multilang" | "form" | "mailing" | "cms" | null;
 
 export default function Demos() {
   const [activeDemo, setActiveDemo] = useState<DemoType>(null);
@@ -70,6 +71,13 @@ export default function Demos() {
       description: "Système d'envoi d'emails automatiques",
       icon: "📧",
       color: "bg-orange-500"
+    },
+    {
+      id: "cms" as DemoType,
+      title: "Module CMS Light",
+      description: "Panel admin pour modifier le contenu",
+      icon: "✏️",
+      color: "bg-blue-500"
     }
   ];
 
@@ -91,6 +99,8 @@ export default function Demos() {
         return <FormDemo />;
       case "mailing":
         return <MailingDemo />;
+      case "cms":
+        return <CMSDemo />;
       default:
         return null;
     }
