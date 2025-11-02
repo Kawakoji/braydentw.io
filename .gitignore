@@ -77,3 +77,6 @@ jspm_packages/
 
 # TernJS port file
 .tern-port
+
+# Admin token file
+.admin-token
